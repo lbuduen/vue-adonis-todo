@@ -18,7 +18,7 @@
       <v-btn text v-if="!isLoggedIn">
         <v-icon left>mdi-fingerprint</v-icon>login
       </v-btn>
-      <v-btn text v-if="isLoggedIn">
+      <v-btn text v-if="isLoggedIn" @click="logout">
         <v-icon left>mdi-exit-to-app</v-icon>logout
       </v-btn>
       <v-btn text>how this was made</v-btn>
@@ -27,10 +27,13 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   computed: {
     ...mapGetters("authentication", ["isLoggedIn"])
+  },
+  methods: {
+    ...mapActions("authentication", ["logout"])
   }
 };
 </script>

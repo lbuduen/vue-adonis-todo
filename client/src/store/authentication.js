@@ -28,6 +28,10 @@ export default {
     }
   },
   actions: {
+    logout({ commit }) {
+      commit("setToken", null);
+      router.push("/login");
+    },
     async register({ commit, state }) {
       commit("setRegisterError", null);
       const url = `/api/auth/register`;
