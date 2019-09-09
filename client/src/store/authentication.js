@@ -12,9 +12,7 @@ export default {
     token: null
   },
   getters: {
-    isLoggedIn(state) {
-      return !!state.token;
-    }
+    isLoggedIn: state => !!state.token
   },
   mutations: {
     setRegisterEmail(state, email) {
