@@ -7,6 +7,7 @@ export default {
   namespaced: true,
   state: {
     projects: [],
+    currentProject: null,
     newProjectTitle: null
   },
   getters: {},
@@ -31,6 +32,9 @@ export default {
     },
     setProjectTitle(state, { project, title }) {
       project.title = title;
+    },
+    setCurrentProject(state, project) {
+      state.currentProject = project;
     }
   },
   actions: {

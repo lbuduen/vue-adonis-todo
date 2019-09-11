@@ -8,6 +8,7 @@
         @onEdit="setEditMode(project)"
         @onSave="saveProject(project)"
         @onDelete="deleteProject(project)"
+        @onClick="projectClicked(project)"
       ></EditableRecord>
     </div>
 
@@ -38,17 +39,23 @@ export default {
     ...mapState("projects", ["newProjectTitle", "projects"])
   },
   methods: {
+    projectClicked(project) {
+      this.setCurrentProject(project);
+      this.fetchTasksForProject(project);
+    },
     ...mapMutations("projects", [
       "setNewProjectTitle",
       "setEditMode",
-      "setProjectTitle"
+      "setProjectTitle",
+      "setCurrentProject"
     ]),
     ...mapActions("projects", [
       "createProject",
       "fetchProjects",
       "saveProject",
       "deleteProject"
-    ])
+    ]),
+    ...mapActions("tasks", ["fetchTasksForProject"])
   }
 };
 </script>
