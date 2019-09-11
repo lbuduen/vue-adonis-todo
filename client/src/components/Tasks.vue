@@ -8,7 +8,11 @@
         @onEdit="setEditMode(task)"
         @onSave="saveTask(task)"
         @onDelete="deleteTask(task)"
-      ></EditableRecord>
+      >
+        <v-icon
+          @click="checkClicked(task)"
+        >{{ task.completed ? 'mdi-checkbox-marked-circle' : 'mdi-checkbox-blank-circle-outline'}}</v-icon>
+      </EditableRecord>
     </div>
     <CreateRecord
       placeholder="I need to..."
@@ -37,8 +41,13 @@ export default {
     ...mapMutations("tasks", [
       "setNewTaskName",
       "setTaskDescription",
-      "setEditMode"
-    ])
+      "setEditMode",
+      "toggleCompleted"
+    ]),
+    checkClicked(task) {
+      this.toggleCompleted(task);
+      this.saveTask(task);
+    }
   }
 };
 </script>

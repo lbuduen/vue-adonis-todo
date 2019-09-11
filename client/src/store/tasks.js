@@ -32,6 +32,9 @@ export default {
     removeTask(state, task) {
       state.tasks.splice(state.tasks.indexOf(task), 1);
     },
+    toggleCompleted(state, task) {
+      task.completed = !task.completed;
+    },
   },
   actions: {
     async fetchTasksForProject({ commit, rootState }, project) {

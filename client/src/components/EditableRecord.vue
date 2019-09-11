@@ -1,6 +1,7 @@
 <template>
   <v-layout row wrap>
     <v-flex xs9 class="text-xs-left">
+      <slot></slot>
       <span v-if="!isEditMode" @click="$emit('onClick')">{{title}}</span>
       <v-text-field
         autofocus
